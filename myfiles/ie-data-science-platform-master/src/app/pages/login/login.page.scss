@@ -1,0 +1,187 @@
+#home_page {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(#3b4550,#3b4550,#3b4550,#3b4550, #3b4550, #3b4550, #3b4550, #444e59, #505a66, #65707c);
+    //background-image: url('../../../assets//images/background_2.png');
+    // background-size: 175vh;
+    // background-repeat: no-repeat;
+    & > section {
+        &:first-child {            
+            height: calc(100% - 40px);
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            @media only screen and (max-width: 1024px) { 
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+            & > section {
+                height: 100%;
+                width: 55%;
+                //background: #f1f1f126;
+                @media only screen and (max-width: 1024px) { 
+                    height: auto;
+                    width: 100%;
+                }
+                &.login {
+                    width: 45%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    & > mat-card {
+                        width: 55%;
+                        position: relative;
+                        @media only screen and (max-width: 1024px) { 
+                            width: 65%;
+                        }
+                        height: 60%;
+                        min-height: 250px;
+                        background: #3b4550;
+                        background: #363d4459;
+                        z-index: 9999;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        .mat-progress-bar {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 3px;
+                        }
+                        & > section {
+                            display: flex;
+                            width: 100%;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            &.header {
+                                height: 15%;
+                                & > .mat-icon {
+                                    height: 70px;
+                                    width: 70px;
+                                    font-size: 70px;
+                                }
+                            }
+                            &.body {
+                                height: 70%;
+                                & > form {
+                                    height: 100%;
+                                    width: 100%;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    .mat-checkbox {
+                                        padding-top: 10px;
+                                        /deep/.mat-checkbox-label {
+                                            color: #eceff1;
+                                            
+                                        }
+                                        /deep/ .mat-checkbox-frame {
+                                            border-color: #eceff1;
+                                        }
+                                    }
+                                    /deep/ .mat-form-field {
+                                        input {
+                                            color: #eceff1;
+                                        }
+
+                                        .mat-form-field-label {
+                                            color: #eceff1;
+                                        }
+
+                                        .mat-form-field-underline {
+                                            background-color: #eceff1;
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                            &.footer {
+                                height: 15%;
+                                & > button {
+                                    width: 100%;
+                                    background: #3b4550;
+                                    border: 1px solid #eceff1;
+                                    color: #eceff1;
+                                }
+                            }
+                        }
+                        @media only screen and (max-width: 1024px) { 
+                            margin: 12%;
+                            height: 65%;
+                        }
+                    }
+                    @media only screen and (max-width: 1024px) { 
+                        width: 100%;
+                        height: 60%;
+                    }
+                }
+                &.intro {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    color: #eceff1;
+                    & > div, & > a {
+                        margin-left: 12%;
+                        margin-bottom: 0;
+                        &.logo {
+                            height: 120px;
+                            width: 160px;
+                            background-image: url('../../../assets/images/liberty-mutual-logo.png');
+                            background-size: 160px;
+                            background-repeat: no-repeat;
+                            background-position: left;
+                        }
+                        &.mat-display-2 {
+                            margin-top: 20%;
+                            font-size: 35px;
+                            text-shadow: 1px 1px 5px #3b4550;
+                            @media only screen and (max-width: 1024px) { 
+                                margin-top: 5px;
+                            }
+                            @media only screen and (max-width: 380px) {
+                                font-size: 26px;
+                            }
+                            @media only screen and (max-height: 570px) {
+                                font-size: 20px;
+                                margin-top: -12px;
+                            }
+                        }
+                        &.mat-display-1 {
+                            padding-left: 4px; 
+                            font-size: 23px;  
+                            text-shadow: 1px 1px 5px #3b4550;
+                            @media only screen and (max-width: 380px) {
+                                font-size: 18px;
+                                line-height: normal;
+                                margin-bottom: 6px;
+                            }
+                            @media only screen and (max-height: 570px) {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                    button {
+                        border-radius: 25px;
+                        margin-left: 12%;
+                        margin-top: 5px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+        &:last-child {
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #eceff1;
+        }
+    }
+}
+

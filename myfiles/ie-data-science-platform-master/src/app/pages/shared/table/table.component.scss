@@ -1,0 +1,182 @@
+
+table {
+    //border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+  
+  table {
+    thead, tbody {
+      tr {
+       //background-color: #f8f8f8;
+        border-bottom: 1px solid #ddd;
+        padding: .35em;
+        &:first-child {
+          border-top: 1px solid #ddd;
+        }
+        td {
+            .link {
+              color: #3366BB;
+            }
+            &.actions {
+                button {
+                    background: #68818d;
+                    margin: 0 1px;
+                    .mat-icon {
+                        color: #f1f1f1;
+                    }
+                    &:last-child {
+                      background: #92a3ac;
+                    }
+                    &:first-child {
+                      background: #37474f;                
+                    }
+                    &:disabled {
+                      background: #dedede;
+                      cursor: not-allowed;
+                    }
+                    
+        
+                    
+                }
+            }
+        }
+      }
+    }
+    thead {
+      & > tr {
+        z-index: 99999;
+        background: #f5f5f5;
+        border-top: none;
+        border-bottom: none;
+        height: 48px;
+        &:first-child {
+          border-top: none;
+        }
+      }
+    }
+    tbody {
+      tr {
+        @for $i from 0 through 36 { 
+          &:nth-child(#{$i}) {
+              -webkit-animation: pop-in 0.3s*$i/2;
+              animation: pop-in 0.3s*$i/2;
+          }
+        }
+        &:hover {
+          background: #f1f1f1;
+          box-shadow: 1px 0px 4px #dedede;
+        
+        }
+      }
+    }
+  }
+  
+  table th,
+  table td {
+    padding: .625em;
+    text-align: center;
+    
+  }
+  
+  table th {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    /deep/ .mat-sort-header-container {
+      justify-content: center;
+      & > .mat-sort-header-button {
+        margin-left: 18px;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+    }
+  }
+  
+  @media screen and (max-width: 1024px) {
+    table {
+      border: 0;
+    }
+  
+    table caption {
+      font-size: 1.3em;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & > .link{
+        margin-right: -11px;
+      }
+      &::before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(headers);
+        //float: left;
+        text-align: left;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      
+      &:last-child {
+        border-bottom: 0;
+      }
+      &.actions {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          
+          &::before{
+              display: none;
+          }
+      }
+    }
+    
+    
+  }
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      // -webkit-transform:translateY(-100%);
+      // transform:translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        // -webkit-transform:translateY(0%);
+        // transform:translateY(0%);
+    }
+  }

@@ -1,0 +1,62 @@
+.internet-check {
+    height: 48px;
+    width: 262px;
+    position: fixed;
+    bottom: 0;
+    left: 0;    
+    font-weight: 500;
+    color: #f1f1f1;
+    background: grey;
+    border-radius: 2px;
+    box-shadow: 0 0 5px #37474f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px 0 25px;
+    z-index: 9999;
+    margin: 24px;
+    animation: slide-in .2s ease-in-out;
+    & > div{
+        font-size: 14px;
+    }
+    & > button {
+        font-size: 30px;
+    }
+    &.has-connection {
+        background: #368636;
+    }
+
+    &.no-connection {
+        background: #ff392e;
+    }
+    @media only screen and (max-width: 1024px) { 
+        width: calc(100% - 40px);
+        bottom: 0;
+        left: 0;
+        border-radius: 0;
+        margin: 0;
+    }
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(100%)
+    }
+    to {
+        opacity: 1;        
+        transform: translateY(0%)
+    }
+}
+
+@-webkit-keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(100%)
+    }
+    to {
+        opacity: 1;        
+        transform: translateY(0%)
+    }
+}

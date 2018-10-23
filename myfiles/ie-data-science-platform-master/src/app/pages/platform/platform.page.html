@@ -1,0 +1,87 @@
+<mat-sidenav-container id="platform" >
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div class="app-logo">
+          <button mat-mini-fab color="primary" class="sidenav-toggle" (click)="sidenavMenu.toggle()"><mat-icon>menu</mat-icon></button>
+        <div class="logo"><div></div></div>
+        <span>IE Data Science Platform</span>
+      </div>  
+      <button mat-mini-fab color="primary" (click)="sidenavAccount.toggle()"><mat-icon>person</mat-icon></button>
+    </mat-toolbar>
+    <div id="platform-container">
+      <section class="side-nav" [ngClass]="{'collapse': !expandLeftPanel}">
+        <iedsp-side-nav></iedsp-side-nav>
+        <button mat-icon-button class="expand-btn" color="primary" (click)="expandLeftPanel = !expandLeftPanel">
+            <mat-icon>{{ expandLeftPanel ? 'chevron_left' : 'chevron_right'}}</mat-icon>
+        </button>
+      </section>
+      <section class="route-container">
+        <router-outlet></router-outlet>
+      </section>
+    </div>
+  </mat-sidenav-content>
+  <mat-sidenav #sidenavAccount mode="over" position="end">
+    <section class="user-section">
+      <div class="logo"><div><mat-icon>person</mat-icon></div></div>
+      <div class="mat-title no-margin">{{user.id}}</div>
+      <div class="mat-body-2">{{user.role == 'admin' ? 'Admin' : 'Developer'}}</div>
+      <button mat-icon-button (click)="sidenavAccount.close()"> &times; </button>
+    </section>
+    <section class="action-section">
+      <button mat-button color="primary" (click)="aboutApp(sidenavAccount)"><mat-icon>info</mat-icon><span>About</span></button>
+      <button mat-button color="primary" (click)="logout(sidenavAccount, feedbackTemplate)"><mat-icon>feedback</mat-icon><span>Feedback</span></button>
+      <button mat-button color="primary" (click)="logout(sidenavAccount, logoutTemplate)"><mat-icon>power_settings_new</mat-icon><span>Sign Out</span></button>
+    </section>
+    <section class="disclaimer-section mat-caption light-text">
+        &copy; This app is for use by authorised Liberty Mutual users only.
+    </section>
+  </mat-sidenav>
+  <mat-sidenav class="sidenav-drawer" #sidenavMenu mode="over">
+      <mat-toolbar color="primary"></mat-toolbar>
+      <iedsp-side-nav [drawer]="sidenavMenu"></iedsp-side-nav>
+  </mat-sidenav>
+</mat-sidenav-container>
+
+<ng-template #logoutTemplate>
+    <div mat-dialog-title class="alert-header">
+        <span>Just Checking...</span>
+    </div>
+    <mat-dialog-content class="alert-content">
+      <div>
+        <mat-icon color="primary">power_settings_new</mat-icon>
+        <h2 class="mat-title">Are you sure you want to log out?</h2>
+        <div class="mat-caption">On logging out you have to log in again next time</div>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button class="mat-raised-button mat-primary"(click)="logOutUser()">Sure</button>
+      <button class="mat-raised-button mat-accent"(click)="cancel()">Cancel</button>
+    </mat-dialog-actions>
+</ng-template>
+
+
+<ng-template #feedbackTemplate>
+    <div mat-dialog-title class="alert-header">
+        <span>Your opinion is important to us</span>
+    </div>
+    <mat-dialog-content class="alert-content">
+      <div>
+        <mat-icon color="primary">feedback</mat-icon>
+        
+        <h2 class="mat-title">How would you rate this app?</h2>
+        <div class="mat-caption">We appreciate feedback so that we can keep improving & building a better customer experience.</div>
+        <div class="rate-star">
+          <button mat-icon-button *ngFor="let rate of [1,2,3,4,5]" (click)="rating = rate" [color]="rate <= rating ? 'primary': 'accent'">
+            <mat-icon>star</mat-icon>
+          </button>
+        </div>
+        <mat-form-field color="accent">
+            <textarea matInput placeholder="Leave a comment" ></textarea>
+        </mat-form-field>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button class="mat-raised-button mat-primary"(click)="submitFeedback()">Submit</button>
+      <button class="mat-raised-button mat-accent"(click)="cancel()">Cancel</button>
+    </mat-dialog-actions>
+</ng-template>

@@ -1,0 +1,22 @@
+<div mat-dialog-title class="dark-text">
+    <span><mat-icon color="primary">{{icon}}</mat-icon>{{title}}</span>
+    <!-- <span>Crop details</span> -->
+    <button mat-icon-button (click)="closeModal()">
+        <mat-icon>close</mat-icon>
+    </button>
+    <mat-progress-bar
+        *ngIf="loading"
+        color="primary"
+        mode="indeterminate">
+    </mat-progress-bar>
+</div>
+  
+  <mat-dialog-content>
+    <ng-content></ng-content>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="actionClick()">{{action}}</button>
+    <button mat-raised-button color="accent" (click)="closeModal()">Cancel</button>
+  </mat-dialog-actions>
+  

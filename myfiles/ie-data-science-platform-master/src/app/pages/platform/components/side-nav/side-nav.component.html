@@ -1,0 +1,13 @@
+<div id="side-nav">
+  <div class="route" *ngFor="let route of routeLinks">
+    <button mat-button [routerLink]="route.link" 
+      [ngClass]="{ 'selected': route.index == getWholeNum(activeLinkIndex) }" 
+      *ngIf="!route.role || (route.role == 'admin' && user.role == 'admin')"
+      (click)="activeLinkIndex =route.index; drawer?.toggle()">
+        <mat-icon>{{ route.icon }}</mat-icon><span>{{ route.label | uppercase }}</span>
+    </button>
+    <div class="sub-route" *ngIf="route.subRoutes && (!route.role || (route.role == 'admin' && user.role == 'admin'))">
+      <button mat-button *ngFor="let subroute of route.subRoutes" [routerLink]="subroute.link" [ngClass]="{ 'selected': subroute.index == activeLinkIndex }"  (click)="activeLinkIndex = subroute.index; drawer?.toggle()">{{ subroute.label }}</button>
+    </div>
+  </div>
+</div>

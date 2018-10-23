@@ -1,0 +1,23 @@
+<table class="dark-text" matSort (matSortChange)="sortData($event)">
+  <thead>
+    <tr>
+      <th scope="col" *ngFor="let header of headers; let i=index" [attr.colspan]="i==0 ? 2 : 1" [mat-sort-header]="header">{{header}}</th>
+      <th scope="col" *ngIf="actions?.length > 0" colspan="2">Action</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of sortedData">
+      <td *ngFor="let col of getKeys(row); let i=index" [headers]="headers[i]" [attr.colspan]="i==0 ? 2 : 1" >
+        {{ !checkLink(row[col]) ? row[col] : ""}}
+        <a class="link" *ngIf="checkLink(row[col])" target="_blank" [href]="row[col]" [matTooltip]="row[col]" mat-icon-button><mat-icon>link</mat-icon></a>
+      </td>
+      <td class="actions" colspan="2">
+        <button mat-mini-fab *ngFor="let action of actions; let i = index" 
+          [color]="i == (actions.length - 1) ? 'accent' : ''" 
+          [matTooltip]="action" (click)="actionClick(action, row)">
+            <mat-icon>{{ iconList[action] }}</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

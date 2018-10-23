@@ -1,0 +1,40 @@
+#side-nav {
+    padding: 10px 0;
+    overflow: hidden;
+    & > .route {
+        button {
+            width: 100%;
+            text-align: left;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: #8394a7;
+            margin: 2px 0;
+            border-left: 3px solid transparent;
+            &.selected {
+                color: #3b4550;
+            }
+            .mat-icon {
+                padding: 0 17px 0 1px;
+            }
+        }
+        & > button {
+            &:hover {
+                border-left-color: #c1c1c1;
+            }
+            &.selected {                
+                border-left: 3px solid #3b4550;                
+                background: #e2ddff;
+            }
+            
+        }
+        & > .sub-route {
+            margin-left: 45px;
+            & > button {
+                margin: 0;
+                font-size: 13px;
+                letter-spacing: 1px;
+                font-weight: 600;
+            }
+        }
+    }
+}

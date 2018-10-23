@@ -1,0 +1,53 @@
+<iedsp-modal [title]="config.title" [icon]="config.icon" [action]="config.action" [loading]="loading" (actionEvent)="createNewUser($event)">
+  <div id="create-user">
+    <div>
+      <div>
+        <mat-form-field color="accent">
+          <input matInput class="dark-text" placeholder="Enter a name*" name="name" [(ngModel)]="newUser.username" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field color="accent">
+          <input matInput class="dark-text" placeholder="Enter user ID*" name="id" [(ngModel)]="newUser.userId" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field color="accent">
+            <input matInput class="dark-text" placeholder="Enter email ID*" name="email" [(ngModel)]="newUser.email" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field color="accent">
+            <mat-select placeholder="Select Group" [(value)]="newUser.group">
+              <mat-option value="admin">Admin</mat-option>
+              <mat-option value="developer">Developer</mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <table>
+        <thead>
+          <tr class="dark-text">
+            <th scope="col" *ngFor="let header of headers; let i=index" [attr.colspan]="i==0 ? '3': '1'">{{header}}</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of s3BucketList;" class="dark-text">
+              <td colspan="3" [headers]="'Bucket Name'">{{ row.name }}</td>
+              <td *ngFor="let item of getKeys(row.permission); let i=index" [headers]="headers[i+1]">
+                  <mat-slide-toggle
+                    [color]="primary"
+                    [checked]="row.permission[item]"
+                    (change)="changeBucketPermission(row, item)"
+                    >
+                  </mat-slide-toggle>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="loading" *ngIf="loading"></div>
+  </div>
+</iedsp-modal>

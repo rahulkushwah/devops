@@ -1,0 +1,100 @@
+#create-user {
+    height: 100%;
+    position: relative;
+    & > .loading {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #f1f1f1;
+        opacity: 0.5;
+        z-index: 99999;
+    }
+    & > div {
+        padding: 10px 0 10px 20px;
+        @media screen and (max-width: 600px) { 
+            padding-right: 20px;
+        }
+        &:first-child {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;            
+            &> div {
+                width: 50%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                .mat-form-field {
+                    width: 90%;
+                }
+            }
+            @media screen and (max-width: 600px) { 
+                flex-direction: column;
+                & > div {
+                    width: 100%;
+                    .mat-form-field {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            table-layout: fixed;
+            td, th {
+                text-align: center;
+                padding: 5px;
+                &:first-child {
+                    text-align: left;
+                }
+            } 
+            th {
+                font-size: 15px;
+                letter-spacing: .1em;
+                text-transform: uppercase;
+            }
+            @media screen and (max-width: 600px) { 
+                thead {
+                    border: none;
+                    clip: rect(0 0 0 0);
+                    height: 1px;
+                    margin: -1px;
+                    overflow: hidden;
+                    padding: 0;
+                    position: absolute;
+                    width: 1px;
+                }
+                tr {
+                    border-bottom: 3px solid #ddd;
+                    display: block;
+                    margin-bottom: .625em;
+                    td {
+                        border-bottom: 1px solid #ddd;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: .8em;
+                        text-align: right;
+                        &::before {
+                            content: attr(headers);
+                            float: left;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                        }
+                        &:last-child {
+                            border-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+

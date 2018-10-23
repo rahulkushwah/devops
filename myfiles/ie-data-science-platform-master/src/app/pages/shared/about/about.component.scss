@@ -1,0 +1,223 @@
+#about-app {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+    bottom: 0;
+    left: 0;
+    //background: #eceff1;
+    background: linear-gradient(#3b4550,#3b4550,#3b4550,#3b4550, #3b4550, #3b4550, #3b4550, #444e59, #505a66, #65707c);
+    overflow-x: hidden;
+    transition: .3s;
+    box-shadow: 0px -2px 10px #353535;
+    &.open {
+        height: 100%;
+    }
+    .header {
+        display: inline-block;
+        width: 55%;
+        height: auto;   
+        @media only screen and (max-width: 1024px) { 
+            width: 100%;
+        }
+        & > a.logo {
+            display: inline-block;
+            height: 120px;
+            width: 160px;
+            margin-left: 12%;
+            background-image: url('../../../../assets/images/liberty-mutual-logo.png');
+            background-size: 160px;
+            background-repeat: no-repeat;
+            background-position: left;
+        }     
+    }
+
+    .about-content {
+        margin: 0 6.6% 30px;
+        width: 87%;
+        min-height: 200px;
+        z-index: 999999;
+        color: #f5f5f5;
+        @media only screen and (max-width: 1024px) { 
+            margin: 0 12%;
+            width: 76%;
+        }
+
+        display: flex;
+        flex-direction: column;
+        & > .feature-row {
+            display: flex;
+            flex-direction: row;
+            padding: 25px 0 25px 0;
+            & > .image-content {
+                width: 50%;
+                text-align: center;
+                perspective: 600;
+                -webkit-perspective: 600;
+                z-index: 9999;                
+                .image {
+                    display: inline-block;
+                    height: 200px;
+                    width: 60%;
+                    background: #eceff1;
+                    border-radius: 10px;
+                    box-shadow: 5px 5px 10px #343434;
+                    padding: 20px;
+                    perspective: 600;
+                    -webkit-perspective: 600;
+                    transform: rotateY(-35deg);
+                    -webkit-animation: image-animation 3s ease-in-out;
+                    animation: image-animation 3s ease-in-out;
+                    transition: transform 3s;
+                    & > div {
+                        height: 100%;
+                        width: 100%;
+                        background-size: contain;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        transform: rotateY(-35deg);
+                        transition: transform 3s;
+                        -webkit-animation: image-animation 3s ease-in-out;
+                        animation: image-animation 3s ease-in-out;
+                        &.cluster-management {
+                            background-image: url('../../../../assets/images/cluster-management.png');
+                        }
+                    }
+                    &.left {
+                        transform: rotateY(35deg);
+                        -webkit-animation: image-animation-2 3s ease-in-out;
+                        animation: image-animation-2 3s ease-in-out;    
+                        box-shadow: -5px 5px 10px #343434;
+                        & > div {                            
+                            transform: rotateY(35deg);
+                            -webkit-animation: image-animation-2 3s ease-in-out;
+                            animation: image-animation-2 3s ease-in-out;
+                        }
+                    }
+                }
+                &:hover {
+                    .image {
+                        transform: rotateY(-25deg);
+                        &.left {
+                            transform: rotateY(25deg);
+                        }
+                    }
+                }
+                
+                
+            }
+            & > .info-content {
+                width: 50%;
+                text-align: justify;
+                z-index: 9999;
+                text-shadow: 1px 1px 1px #343434;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                h1 {
+                    position: relative;
+                    display: inline-block;
+                    width: auto;
+                    text-align: left;
+                    .line {
+                        position: absolute;
+                        bottom: -5px;
+                        height: 2px;
+                        width: 100%;
+                        background: #f5f5f5;
+                    }
+                }
+            }
+            
+            @media only screen and (max-width: 1024px) { 
+                &:nth-child(odd){
+                    flex-direction: column;
+                }
+                &:nth-child(even) {
+                    flex-direction: column-reverse;
+                }
+                & > .image-content, & > .info-content {
+                    width: 100%;
+                }
+                & > .info-content {
+                    padding-bottom: 40px;
+                }
+            }
+        }
+    }
+    
+
+    .close-btn {
+        position: fixed;
+        right: 15px;
+        top: 30px;
+        animation: particle-appear 2s;
+        .mat-icon {
+            font-size: 30px;
+            height: 30px;
+            width: 30px;
+            cursor: pointer;
+        }
+    }
+
+    /deep/ .particles-container {
+        animation: particle-appear 1s;
+    }
+
+}
+
+@keyframes particle-appear {
+    from {
+        opacity: 0;
+        z-index: -1;
+    }
+    to {
+        opacity: 1;
+        z-index: 9999;
+    }
+}
+
+@-webkit-keyframes particle-appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes image-animation {
+    from {
+        transform: rotateY(-25deg);
+    }
+    to {
+        transform: rotateY(-35deg);
+    }
+}
+
+@-webkit-keyframes image-animation {
+    from {
+        transform: rotateY(-25deg);
+    }
+    to {
+        transform: rotateY(-35deg);
+    }
+}
+
+@keyframes image-animation-2 {
+    from {
+        transform: rotateY(25deg);
+    }
+    to {
+        transform: rotateY(35deg);
+    }
+}
+
+@-webkit-keyframes image-animation-2 {
+    from {
+        transform: rotateY(25deg);
+    }
+    to {
+        transform: rotateY(35deg);
+    }
+}
